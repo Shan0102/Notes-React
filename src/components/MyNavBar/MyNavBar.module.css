@@ -1,0 +1,40 @@
+.links {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: start;
+    background-color: #333;
+    gap: 30px;
+}
+
+.link {
+    text-decoration: none;
+    color: #ccc;
+    border: none;
+    font-size: inherit;
+    background-color: transparent;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.link:active {
+    color: #fff;
+}
+
+.active {
+    text-decoration: underline;
+}
+
+.disabled {
+    color: #777;
+}
+
+.disabled:active {
+    color: #777;
+}
+
+.disabled:hover {
+    text-decoration: none;
+}

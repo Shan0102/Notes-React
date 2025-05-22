@@ -1,0 +1,39 @@
+import type { Note } from "../types";
+
+const user_id = localStorage.getItem("user_id");
+const token = localStorage.getItem("token");
+
+const API_GET_NOTES_PATH =
+    "http://localhost:3000/api/notes/user/" + (user_id !== null ? user_id : (-1).toString());
+
+type getNotesByUserIdType = (
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+) => Promise<[notes: Note[], error: string | null]>;
+
+const getNotesByUserId: getNotesByUserIdType = async (setIsLoading) => {
+    try {
+        setIsLoading(true);
+
+        const response = await fetch(API_GET_NOTES_PATH, {
+            method: "GET",
+            headers: {
+                authorization: `Bearer ${token ? token : -1}`,
+            },
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            return [[], error.Error];
+        } else {
+            const notes = (await response.json()) as Note[];
+            return [notes, null];
+        }
+    } catch (error) {
+        if (error instanceof Error) return [[], error.message];
+        else return [[], "unknown error"];
+    } finally {
+        setIsLoading(false);
+    }
+};
+
+export default getNotesByUserId;

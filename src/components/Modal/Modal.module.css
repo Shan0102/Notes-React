@@ -1,0 +1,36 @@
+.modal {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 5;
+
+    padding: 10px;
+    padding-right: 50px;
+
+    background-color: #222;
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+
+.modal-btn {
+    border: none;
+    outline: none;
+    background: none;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    color: #ffffff;
+    font-size: 30px;
+
+    display: block;
+    width: 30px;
+    height: 30px;
+
+    transition: all 0.2s ease-in-out;
+}
+
+.modal-btn:hover {
+    color: #c62e2e;
+}

@@ -1,0 +1,28 @@
+.note-item {
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+}
+
+.note-item:hover {
+    background-color: #666;
+}
+
+.active {
+    background-color: #555;
+}
+
+.title {
+    font-size: 1.55rem;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.last-change {
+    font-size: 1rem;
+    color: #a8d39d;
+}
