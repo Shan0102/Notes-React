@@ -1,7 +1,5 @@
 import type { Note, PostNote } from "../types";
 
-const token = localStorage.getItem("token");
-
 const API_CREATE_NEW_NOTE_PATH = "http://localhost:3000/api/notes";
 
 type CreateNewNoteType = (
@@ -12,9 +10,11 @@ const createNewNote: CreateNewNoteType = async (setIsLoading) => {
     try {
         setIsLoading(true);
 
+        const token = localStorage.getItem("token");
+
         const newNote: PostNote = {
-            title: "title",
-            content: "content",
+            title: "",
+            content: "",
             completed: false,
         };
 

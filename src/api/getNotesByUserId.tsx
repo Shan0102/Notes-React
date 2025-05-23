@@ -1,10 +1,6 @@
 import type { Note } from "../types";
 
-const user_id = localStorage.getItem("user_id");
-const token = localStorage.getItem("token");
-
-const API_GET_NOTES_PATH =
-    "http://localhost:3000/api/notes/user/" + (user_id !== null ? user_id : (-1).toString());
+const API_GET_NOTES_PATH = "http://localhost:3000/api/notes/user/";
 
 type getNotesByUserIdType = (
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
@@ -14,12 +10,18 @@ const getNotesByUserId: getNotesByUserIdType = async (setIsLoading) => {
     try {
         setIsLoading(true);
 
-        const response = await fetch(API_GET_NOTES_PATH, {
-            method: "GET",
-            headers: {
-                authorization: `Bearer ${token ? token : -1}`,
-            },
-        });
+        const user_id = localStorage.getItem("user_id");
+        const token = localStorage.getItem("token");
+
+        const response = await fetch(
+            API_GET_NOTES_PATH + (user_id !== null ? user_id : (-1).toString()),
+            {
+                method: "GET",
+                headers: {
+                    authorization: `Bearer ${token ? token : -1}`,
+                },
+            }
+        );
 
         if (!response.ok) {
             const error = await response.json();

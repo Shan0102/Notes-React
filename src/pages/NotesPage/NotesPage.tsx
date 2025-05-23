@@ -9,7 +9,7 @@ import createNewNote from "../../api/createNewNote";
 import sortNotes from "../../utils/sortNotes";
 import LoadingDots from "../../components/LoadingDots/LoadingDots";
 import AuthContext from "../../context/contextAuth";
-import Modals from "../../components/modals";
+import Modals from "../../components/Modals";
 
 import styles from "./NotesPage.module.css";
 
@@ -18,8 +18,11 @@ interface NotesPageProps {}
 const NotesPage: FC<NotesPageProps> = () => {
     const { isAuth } = useContext(AuthContext);
 
-    const addModalRef = useRef<(text: string) => void>(null);
+    const addModalRef = useRef<(content: React.ReactNode) => void>(null);
     const addModal = addModalRef.current ? addModalRef.current : () => {};
+
+    const deleteTopModalRef = useRef<() => void>(null);
+    const deleteTopModal = deleteTopModalRef.current ? deleteTopModalRef.current : () => {};
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -58,9 +61,32 @@ const NotesPage: FC<NotesPageProps> = () => {
         ]);
     };
 
+    const deleteNoteFromNotes = (note_id: number) => {
+        setNotes((prev) => [...prev.filter((note) => note.note_id !== note_id)]);
+    };
+
+    const deleteNoteHandler = (deleteNoteCallback: () => void, note_id: number) => {
+        const cb = () => {
+            deleteTopModal();
+            deleteNoteCallback();
+            setCurrNote(null);
+            deleteNoteFromNotes(note_id);
+        };
+        const modal = (
+            <div>
+                are you sure?
+                <div>
+                    <MyButton title="YES" onclick={cb} />
+                    <MyButton title="NO" onclick={deleteTopModal} />
+                </div>
+            </div>
+        );
+        addModal(modal);
+    };
+
     return (
         <div className={styles["notes-page"]}>
-            <Modals ref={addModalRef} />
+            <Modals addModalRef={addModalRef} deleteTopModalRef={deleteTopModalRef} />
             <div className={styles["notes-list"]}>
                 <MyButton title="add new note+" onclick={createAndSetNote} disabled={isLoading} />
                 {isLoading ? <LoadingDots /> : ""}
@@ -77,9 +103,9 @@ const NotesPage: FC<NotesPageProps> = () => {
                 {currNote ? (
                     <NoteInterface
                         note={currNote}
-                        setCurrNote={setCurrNote}
                         update={updateNote}
                         addError={addModal}
+                        deleteNoteHandler={deleteNoteHandler}
                     />
                 ) : (
                     ""

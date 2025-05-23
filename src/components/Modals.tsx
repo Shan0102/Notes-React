@@ -1,27 +1,29 @@
-import { useState, type FC, type RefObject } from "react";
+import React, { useState, type FC, type RefObject } from "react";
 import type { ModalData } from "../types";
 import Modal from "./Modal/Modal";
 
 interface ModalsProps {
-    ref: RefObject<((text: string) => void) | null>;
+    addModalRef: RefObject<((text: string) => void) | null>;
+    deleteTopModalRef: RefObject<(() => void) | null>;
 }
 
-const Modals: FC<ModalsProps> = ({ ref }) => {
+const Modals: FC<ModalsProps> = ({ addModalRef, deleteTopModalRef }) => {
     const [modals, setModals] = useState<ModalData[]>([]);
 
-    const addModal = (text: string): void => {
+    const addModal = (content: React.ReactNode): void => {
         const newModal: ModalData = {
-            content: text,
+            content: content,
             id: new Date().toString(),
         };
         setModals((prev) => [...prev, newModal]);
     };
 
-    ref.current = addModal;
-
     const removeTopModal = () => {
         setModals((prev) => prev.slice(0, -1));
     };
+
+    addModalRef.current = addModal;
+    deleteTopModalRef.current = removeTopModal;
 
     return (
         <>

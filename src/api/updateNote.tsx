@@ -1,7 +1,5 @@
 import type { Note, PostNote } from "../types";
 
-const token = localStorage.getItem("token");
-
 const API_UPDATE_NOTE_PATH = "http://localhost:3000/api/notes/";
 
 type UpdateNoteType = (
@@ -13,6 +11,8 @@ type UpdateNoteType = (
 const updateNote: UpdateNoteType = async (note, note_id, setIsLoading) => {
     try {
         setIsLoading(true);
+
+        const token = localStorage.getItem("token");
 
         const response = await fetch(API_UPDATE_NOTE_PATH + note_id, {
             method: "PUT",

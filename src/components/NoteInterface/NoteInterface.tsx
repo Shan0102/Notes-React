@@ -7,16 +7,16 @@ import MyButton from "../MyButton/MyButton";
 import MyCheckbox from "../MyCheckbox/MyCheckbox";
 import updateNote from "../../api/updateNote";
 import LoadingDots from "../LoadingDots/LoadingDots";
+import deleteNoteByNoteId from "../../api/deleteNote";
 
 interface NoteInterfaceProps {
     note: Note;
     update: (note: Note) => void;
     addError: (error: string) => void;
-    setCurrNote: React.Dispatch<React.SetStateAction<Note | null>>;
+    deleteNoteHandler: (deleteNoteCallback: () => void, note_id: number) => void;
 }
 
-const NoteInterface: FC<NoteInterfaceProps> = ({ note, update, addError, setCurrNote }) => {
-    // addError("put error");
+const NoteInterface: FC<NoteInterfaceProps> = ({ note, update, addError, deleteNoteHandler }) => {
     const [noteTitle, setNoteTitle] = useState("");
     const [noteContent, setNoteContent] = useState("");
     const [noteCompleted, setNoteCompleted] = useState(false);
@@ -28,20 +28,6 @@ const NoteInterface: FC<NoteInterfaceProps> = ({ note, update, addError, setCurr
         setNoteContent(note.content);
         setNoteCompleted(note.completed === 1 ? true : false);
     }, [note]);
-
-    // useEffect(() => {
-    //     setCurrNote((prev) => {
-    //         if (prev) {
-    //             return {
-    //                 ...prev,
-    //                 title: noteTitle,
-    //                 content: noteContent,
-    //                 completed: noteCompleted ? 1 : 0,
-    //             };
-    //         }
-    //         return null;
-    //     });
-    // }, [noteTitle, noteContent, noteCompleted]);
 
     const saveChanges = async () => {
         const noteToUpdate: PostNote = {
@@ -55,6 +41,14 @@ const NoteInterface: FC<NoteInterfaceProps> = ({ note, update, addError, setCurr
         if (updatedNote) update(updatedNote);
     };
 
+    const deleteNote = async (note_id: number) => {
+        const cb = async () => {
+            const error = await deleteNoteByNoteId(note_id, setIsLoading);
+            if (error) addError(error);
+        };
+        deleteNoteHandler(cb, note_id);
+    };
+
     return (
         <div className={styles["note-interface"]}>
             <div className={styles["note-controllers"]}>
@@ -66,6 +60,7 @@ const NoteInterface: FC<NoteInterfaceProps> = ({ note, update, addError, setCurr
                 <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
                     {isLoading ? <LoadingDots /> : ""}
                     <MyButton title="SAVE" onclick={saveChanges} />
+                    <MyButton title="DELETE" onclick={() => deleteNote(note.note_id)} />
                 </div>
             </div>
             <div className={styles["note-areas"]}>

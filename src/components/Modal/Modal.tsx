@@ -10,12 +10,9 @@ interface ModalProps {
 
 const Modal: FC<ModalProps> = ({ children, remove, isTop }) => {
     return (
-        <div className={styles.modal}>
+        <div className={`${styles.modal}  ${isTop ? styles.top : ""}`}>
             {children}
-            <button
-                onClick={() => remove()}
-                className={`${styles["modal-btn"]} ${isTop ? styles.top : ""}`}
-            >
+            <button onClick={() => remove()} className={`${styles["modal-btn"]}`}>
                 &#10006;
             </button>
         </div>
