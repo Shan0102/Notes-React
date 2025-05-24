@@ -1,0 +1,66 @@
+import { useRef, useState, type FC } from "react";
+
+import MyInput from "../../components/MyInput/MyInput";
+import MyButton from "../../components/MyButton/MyButton";
+import LoadingDots from "../../components/LoadingDots/LoadingDots";
+
+import { validateName } from "../../utils/validation";
+import updateUser from "../../api/updateUser";
+
+import styles from "./UserPage.module.css";
+
+const UserPage: FC = () => {
+    const isPut = useRef(false);
+
+    const [isNotValid1, setIsNotValid1] = useState(true);
+    const [isNotValid2, setIsNotValid2] = useState(true);
+
+    const [putError, setPutError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const [updatedUser, error] = await updateUser(e.currentTarget, setIsLoading);
+
+        isPut.current = true;
+        setPutError(error);
+    };
+
+    return (
+        <div className={styles.container}>
+            <div className={styles["user-page"]}>
+                <h1 className={styles.title}>You can change user info</h1>
+                <form className={styles.form} onSubmit={handleSubmit}>
+                    <MyInput
+                        name="name"
+                        placeholder={"name "}
+                        validation={validateName}
+                        setError={setIsNotValid1}
+                    />
+                    <MyInput
+                        name="username"
+                        placeholder={"username"}
+                        validation={validateName}
+                        setError={setIsNotValid2}
+                    />
+                    <MyButton
+                        disabled={isNotValid1 || isNotValid2}
+                        title="Save changes"
+                        type="submit"
+                    />
+                </form>
+                {isLoading ? <LoadingDots /> : ""}
+                {isPut.current ? (
+                    <div className={putError ? styles.error : styles.success}>
+                        {putError || "User updated succesfully"}
+                    </div>
+                ) : (
+                    ""
+                )}
+            </div>
+        </div>
+    );
+};
+
+export default UserPage;

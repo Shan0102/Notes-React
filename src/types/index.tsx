@@ -15,7 +15,7 @@ interface User {
     user_id: number;
     name: string;
     username: string; // unique
-    email: string;
+    email: string; // unique
     google_id: string | null; // unique
     role: string;
     memory_usage: number; // bytes
@@ -39,9 +39,14 @@ interface PostNote {
     completed: boolean;
 }
 
+interface UpdateUserInfo {
+    name: string;
+    username: string;
+}
+
 interface ModalData {
     content: React.ReactNode;
     id: string;
 }
 
-export type { Route, Link, User, Note, PostNote, ModalData };
+export type { Route, Link, User, Note, PostNote, ModalData, UpdateUserInfo };

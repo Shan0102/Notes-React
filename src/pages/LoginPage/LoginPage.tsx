@@ -18,7 +18,7 @@ const LoginPage: FC<LoginPageProps> = () => {
     const [dataValidation, setDataValidation] = useState(() => validateName);
 
     const [loginError, setLoginError] = useState<string | null>(null);
-    const [error, setError] = useState(true);
+    const [isNotValid, setIsNotValid] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -61,10 +61,10 @@ const LoginPage: FC<LoginPageProps> = () => {
                     name="data"
                     placeholder={dataType + " for login"}
                     validation={dataValidation}
-                    setError={setError}
+                    setError={setIsNotValid}
                 />
                 <MyInput name="password" type="password" placeholder="password" />
-                <MyButton disabled={error} title="Login" type="submit" />
+                <MyButton disabled={isNotValid} title="Login" type="submit" />
                 {isLoading ? <LoadingDots /> : ""}
                 {loginError ? <div className={styles.result}>{loginError}</div> : ""}
             </form>

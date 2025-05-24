@@ -21,25 +21,37 @@ const MyNavBar: FC = () => {
 
     return (
         <>
-            <div className={styles.links}>
-                {links.map((link) => (
-                    <NavLink
-                        key={link.title}
-                        to={link.path}
-                        className={({ isActive }) => {
-                            return `${styles.link} ${isActive ? styles.active : ""} ${
-                                link.disabled ? styles.disabled : ""
-                            }`;
-                        }}
-                        onClick={disable(link.disabled ? true : false)}
-                    >
-                        {link.title}
-                    </NavLink>
-                ))}
+            <div className={styles.nav}>
+                <div className={styles.links}>
+                    {links.map((link) => (
+                        <NavLink
+                            key={link.title}
+                            to={link.path}
+                            className={({ isActive }) => {
+                                return `${styles.link} ${isActive ? styles.active : ""} ${
+                                    link.disabled ? styles.disabled : ""
+                                }`;
+                            }}
+                            onClick={disable(link.disabled ? true : false)}
+                        >
+                            {link.title}
+                        </NavLink>
+                    ))}
+                </div>
                 {links === privateLinks ? (
-                    <button className={styles.link} onClick={() => logout(setIsAuth)}>
-                        Logout
-                    </button>
+                    <div className={styles["user-actions"]}>
+                        <NavLink
+                            to={"/user"}
+                            className={({ isActive }) => {
+                                return `${styles.link} ${isActive ? styles.active : ""}`;
+                            }}
+                        >
+                            User
+                        </NavLink>
+                        <button className={styles.link} onClick={() => logout(setIsAuth)}>
+                            Logout
+                        </button>
+                    </div>
                 ) : (
                     ""
                 )}
