@@ -54,7 +54,7 @@ const NotesPage: FC<NotesPageProps> = () => {
         setNotes(sortedNotes);
     };
 
-    const updateNote = (noteToUpdate: Note) => {
+    const updateNoteList = (noteToUpdate: Note) => {
         setNotes((prev) => [
             noteToUpdate,
             ...prev.filter((note) => note.note_id !== noteToUpdate.note_id),
@@ -103,7 +103,7 @@ const NotesPage: FC<NotesPageProps> = () => {
                 {currNote ? (
                     <NoteInterface
                         note={currNote}
-                        update={updateNote}
+                        update={updateNoteList}
                         addError={addModal}
                         deleteNoteHandler={deleteNoteHandler}
                     />

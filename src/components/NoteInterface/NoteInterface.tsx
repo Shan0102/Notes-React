@@ -8,6 +8,7 @@ import MyCheckbox from "../MyCheckbox/MyCheckbox";
 import updateNote from "../../api/updateNote";
 import LoadingDots from "../LoadingDots/LoadingDots";
 import deleteNoteByNoteId from "../../api/deleteNote";
+import { deleteDraft, getDraftKey, updateDraft } from "../../utils/storeUnsavedChanges";
 
 interface NoteInterfaceProps {
     note: Note;
@@ -23,11 +24,40 @@ const NoteInterface: FC<NoteInterfaceProps> = ({ note, update, addError, deleteN
 
     const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
+    const setInitialValues = () => {
         setNoteTitle(note.title);
         setNoteContent(note.content);
-        setNoteCompleted(note.completed === 1 ? true : false);
+        setNoteCompleted(note.completed === 1);
+    };
+
+    useEffect(() => {
+        const key = getDraftKey(note.note_id);
+        const draft = localStorage.getItem(key);
+
+        if (draft) {
+            try {
+                const parsed = JSON.parse(draft);
+                setNoteTitle(parsed.title ?? note.title);
+                setNoteContent(parsed.content ?? note.content);
+                setNoteCompleted(parsed.completed ?? note.completed === 1);
+            } catch {
+                setInitialValues();
+            }
+        } else setInitialValues();
     }, [note]);
+
+    const handleTitleChange = (value: string) => {
+        setNoteTitle(value);
+        updateDraft(note.note_id, value, noteContent, noteCompleted);
+    };
+    const handleContentChange = (value: string) => {
+        setNoteContent(value);
+        updateDraft(note.note_id, noteTitle, value, noteCompleted);
+    };
+    const handleCompletedChange = (checked: boolean) => {
+        setNoteCompleted(checked);
+        updateDraft(note.note_id, noteTitle, noteContent, checked);
+    };
 
     const saveChanges = async () => {
         const noteToUpdate: PostNote = {
@@ -38,7 +68,10 @@ const NoteInterface: FC<NoteInterfaceProps> = ({ note, update, addError, deleteN
 
         const [updatedNote, error] = await updateNote(noteToUpdate, note.note_id, setIsLoading);
         if (error) addError(error);
-        if (updatedNote) update(updatedNote);
+        if (updatedNote) {
+            update(updatedNote);
+            deleteDraft(note.note_id);
+        }
     };
 
     const deleteNote = async (note_id: number) => {
@@ -55,7 +88,7 @@ const NoteInterface: FC<NoteInterfaceProps> = ({ note, update, addError, deleteN
                 <MyCheckbox
                     title="completed"
                     checked={noteCompleted}
-                    setChecked={setNoteCompleted}
+                    setChecked={handleCompletedChange}
                 />
                 <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
                     {isLoading ? <LoadingDots /> : ""}
@@ -68,14 +101,14 @@ const NoteInterface: FC<NoteInterfaceProps> = ({ note, update, addError, deleteN
                     name="title"
                     placeholder="note's title"
                     value={noteTitle}
-                    setValue={setNoteTitle}
+                    setValue={handleTitleChange}
                 />
                 <MyTextarea
                     auto={false}
                     name="content"
                     placeholder="note's content"
                     value={noteContent}
-                    setValue={setNoteContent}
+                    setValue={handleContentChange}
                     max={10000}
                 />
             </div>

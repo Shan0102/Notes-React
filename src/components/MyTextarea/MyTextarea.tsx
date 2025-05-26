@@ -5,7 +5,7 @@ interface MyTextareaProps {
     name: string;
     placeholder: string;
     value: string;
-    setValue: React.Dispatch<React.SetStateAction<string>>;
+    setValue: (value: string) => void;
     max?: number;
     auto?: boolean;
 }

@@ -5,7 +5,7 @@ import styles from "./MyCheckbox.module.css";
 interface MyCheckboxProps {
     title: string;
     checked: boolean;
-    setChecked: React.Dispatch<React.SetStateAction<boolean>>;
+    setChecked: (checked: boolean) => void;
 }
 
 const MyCheckbox: FC<MyCheckboxProps> = ({ title, checked, setChecked }) => {
