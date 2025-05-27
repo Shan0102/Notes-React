@@ -1,0 +1,22 @@
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.settings_title {
+    text-align: center;
+    font-size: 3rem;
+}
+.settings_subtitle {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.settings_block {
+}
+.settings_btn-controls {
+    display: flex;
+}
+
+.settings_btn-controls > * {
+    flex: 1;
+}

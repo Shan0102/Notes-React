@@ -17,8 +17,8 @@
     text-decoration: none;
     color: #ccc;
     border: none;
-    font-size: inherit;
     background-color: transparent;
+    font-size: inherit;
 }
 
 .link:hover {
@@ -47,5 +47,21 @@
 
 .user-actions {
     display: flex;
+    align-items: center;
     gap: 20px;
+}
+
+.settings {
+    display: inline-block;
+    line-height: 1;
+    font-size: 35px;
+    height: 35px;
+    width: 35px;
+    border: none;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+.settings:hover {
+    color: #478063;
 }

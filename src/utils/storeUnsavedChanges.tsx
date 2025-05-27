@@ -14,6 +14,17 @@ const addDraftToIndex = (note_id: number) => {
         const toDelete = existing.shift();
         if (toDelete !== undefined) deleteDraft(toDelete);
     }
+
+    localStorage.setItem(DRAFT_INDEX_KEY, JSON.stringify(existing));
+};
+
+const deleteDraftFromIndex = (note_id: number) => {
+    const raw = localStorage.getItem(DRAFT_INDEX_KEY);
+    const index = raw ? (JSON.parse(raw) as number[]) : [];
+
+    const existing = index.filter((id) => id !== note_id);
+
+    localStorage.setItem(DRAFT_INDEX_KEY, JSON.stringify(existing));
 };
 
 const updateDraft = (note_id: number, title: string, content: string, completed: boolean) => {
@@ -36,6 +47,7 @@ const updateDraft = (note_id: number, title: string, content: string, completed:
 const deleteDraft = (note_id: number) => {
     const key = getDraftKey(note_id);
     localStorage.removeItem(key);
+    deleteDraftFromIndex(note_id);
 };
 
 export { getDraftKey, updateDraft, deleteDraft };

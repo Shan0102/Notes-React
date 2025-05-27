@@ -1,4 +1,4 @@
-import { useContext, type FC } from "react";
+import { useContext, useState, type FC } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
 import logout from "../../api/logout";
@@ -6,6 +6,8 @@ import AuthContext from "../../context/contextAuth";
 import { privateLinks, publicLinks } from "./links";
 
 import styles from "./MyNavBar.module.css";
+import PopUp from "../PopUp/PopUp";
+import SettingsBlock from "../SettingsBlock/SettingsBlock";
 
 function disable(disabled: boolean) {
     if (disabled) {
@@ -18,6 +20,8 @@ function disable(disabled: boolean) {
 const MyNavBar: FC = () => {
     const { isAuth, setIsAuth } = useContext(AuthContext);
     const links = isAuth ? privateLinks : publicLinks;
+
+    const [visible, setVisible] = useState(true);
 
     return (
         <>
@@ -38,24 +42,32 @@ const MyNavBar: FC = () => {
                         </NavLink>
                     ))}
                 </div>
-                {links === privateLinks ? (
-                    <div className={styles["user-actions"]}>
-                        <NavLink
-                            to={"/user"}
-                            className={({ isActive }) => {
-                                return `${styles.link} ${isActive ? styles.active : ""}`;
-                            }}
-                        >
-                            User
-                        </NavLink>
-                        <button className={styles.link} onClick={() => logout(setIsAuth)}>
-                            Logout
-                        </button>
-                    </div>
-                ) : (
-                    ""
-                )}
+                <div className={styles["user-actions"]}>
+                    {links === privateLinks ? (
+                        <>
+                            <NavLink
+                                to={"/user"}
+                                className={({ isActive }) => {
+                                    return `${styles.link} ${isActive ? styles.active : ""}`;
+                                }}
+                            >
+                                User
+                            </NavLink>
+                            <button className={styles.link} onClick={() => logout(setIsAuth)}>
+                                Logout
+                            </button>
+                        </>
+                    ) : (
+                        ""
+                    )}
+                    <button className={`${styles.settings}`} onClick={() => setVisible(true)}>
+                        &#9881;
+                    </button>
+                </div>
             </div>
+            <PopUp visible={visible} setVisible={setVisible}>
+                <SettingsBlock />
+            </PopUp>
             <Outlet />
         </>
     );
