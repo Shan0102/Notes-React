@@ -8,7 +8,7 @@
 
 .notes-list {
     padding: 10px;
-    border: 2px solid #fff;
+    border: 2px solid var(--text-color);
     border-radius: 10px;
     width: 300px;
     overflow-y: auto;
@@ -19,12 +19,12 @@
 .notes-list::-webkit-scrollbar {
     border-radius: 4px;
     width: 8px;
-    background-color: #333;
+    background-color: var(--bg-color-diff);
     overflow: hidden;
 }
 
 .notes-list::-webkit-scrollbar-thumb {
-    background-color: #fff;
+    background-color: var(--text-color);
     border-radius: 4px;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .notes-interface-container {
-    border: 2px solid #fff;
+    border: 2px solid var(--text-color);
     border-radius: 10px;
     flex: 1;
 }

@@ -1,14 +1,14 @@
 .btn {
-    color: #fff;
-    background-color: #333;
-    border: 2px solid #000;
+    color: var(--text-color);
+    background-color: var(--bg-color-diff);
+    border: 2px solid var(--bg-color-firm);
     cursor: pointer;
     transition: all 0.2s ease-out;
 }
 
 .btn:hover {
-    color: #333;
-    background-color: #fff;
+    color: var(--bg-color-diff);
+    background-color: var(--text-color);
 }
 
 .btn:active {
@@ -43,6 +43,6 @@
 }
 
 .active {
-    color: #333;
-    background-color: #fff;
+    color: var(--bg-color-diff);
+    background-color: var(--text-color);
 }

@@ -8,8 +8,8 @@
     padding: 10px;
     padding-right: 50px;
 
-    background-color: #222;
-    border: 2px solid #fff;
+    background-color: var(--bg-color-diff);
+    border: 2px solid var(--text-color);
     border-radius: 10px;
 }
 
@@ -22,7 +22,7 @@
     top: 0;
     right: 0;
 
-    color: #ffffff;
+    color: var(--text-color);
     font-size: 30px;
 
     display: block;

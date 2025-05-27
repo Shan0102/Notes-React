@@ -1,13 +1,13 @@
-import { useState, type FC } from "react";
+import { useContext, type FC } from "react";
 import MyButton from "../MyButton/MyButton";
 
 import styles from "./SettingsBlock.module.css";
+import { SettingsContext } from "../../context/SettingsContext";
 
 interface SettingsBlockProps {}
 
 const SettingsBlock: FC<SettingsBlockProps> = () => {
-    const [lang, setLang] = useState<"english" | "russian">("english");
-    const [theme, setTheme] = useState<"dark" | "light">("dark");
+    const { language, setLanguage, theme, setTheme } = useContext(SettingsContext);
 
     return (
         <div className={styles.settings}>
@@ -17,13 +17,13 @@ const SettingsBlock: FC<SettingsBlockProps> = () => {
                 <div className={styles["settings_btn-controls"]}>
                     <MyButton
                         title="russian"
-                        onclick={() => setLang("russian")}
-                        active={lang === "russian"}
+                        onclick={() => setLanguage("russian")}
+                        active={language === "russian"}
                     />
                     <MyButton
                         title="english"
-                        onclick={() => setLang("english")}
-                        active={lang === "english"}
+                        onclick={() => setLanguage("english")}
+                        active={language === "english"}
                     />
                 </div>
             </div>

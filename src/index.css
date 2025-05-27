@@ -1,3 +1,45 @@
+:root {
+    --text-color: #fff; /* var(--text-color) */
+    --text-color-diff: #ccc; /* var(--text-color-diff) */
+    --text-color-dis: #777; /* var(--text-color-dis) */
+    --bg-color: #444; /* var(--bg-color) */
+    --bg-color-diff: #333; /* var(--bg-color-diff) */
+    --bg-color-firm: #000; /* var(--bg-color-firm) */
+    --popup-bg-color: rgba(0, 0, 0, 0.5); /* var(--popup-bg-color) */
+    --note-color-hover: #666; /* var(--note-color-hover) */
+    --note-color-active: #555; /* var(--note-color-active) */
+    --note-color-diff: #a8d39d; /* var(--note-color-diff) */
+    --checkbox-color-hover: #aaa; /* var(--checkbox-color-hover) */
+}
+
+[data-theme="dark"] {
+    --text-color: #fff; /* var(--text-color) */
+    --text-color-diff: #ccc; /* var(--text-color-diff) */
+    --text-color-dis: #777; /* var(--text-color-dis) */
+    --bg-color: #444; /* var(--bg-color) */
+    --bg-color-diff: #333; /* var(--bg-color-diff) */
+    --bg-color-firm: #000; /* var(--bg-color-firm) */
+    --popup-bg-color: rgba(0, 0, 0, 0.5); /* var(--popup-bg-color) */
+    --note-color-hover: #666; /* var(--note-color-hover) */
+    --note-color-active: #555; /* var(--note-color-active) */
+    --note-color-diff: #a8d39d; /* var(--note-color-diff) */
+    --checkbox-color-hover: #aaa; /* var(--checkbox-color-hover) */
+}
+
+[data-theme="light"] {
+    --text-color: #222; /* var(--text-color) */
+    --text-color-diff: #333; /* var(--text-color-diff) */
+    --text-color-dis: #555; /* var(--text-color-dis) */
+    --bg-color: #ccc; /* var(--bg-color) */
+    --bg-color-diff: #bbb; /* var(--bg-color-diff) */
+    --bg-color-firm: #aaa; /* var(--bg-color-firm) */
+    --popup-bg-color: rgba(0, 0, 0, 0.5); /* var(--popup-bg-color) */
+    --note-color-hover: #777; /* var(--note-color-hover) */
+    --note-color-active: #888; /* var(--note-color-active) */
+    --note-color-diff: #21780c; /* var(--note-color-diff) */
+    --checkbox-color-hover: #555; /* var(--checkbox-color-hover) */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -19,6 +61,6 @@ body button {
     font-weight: 400;
     font-style: normal;
     font-size: 2rem;
-    background-color: #444;
-    color: #fff;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }

@@ -24,12 +24,12 @@
 .note-areas textarea:nth-child(2)::-webkit-scrollbar {
     border-radius: 4px;
     width: 8px;
-    background-color: #333;
+    background-color: var(--bg-color-diff);
     overflow: hidden;
 }
 
 .note-areas textarea:nth-child(2)::-webkit-scrollbar-thumb {
-    background-color: #fff;
+    background-color: var(--text-color);
     border-radius: 4px;
 }
 

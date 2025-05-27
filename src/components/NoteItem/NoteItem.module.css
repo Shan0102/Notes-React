@@ -7,11 +7,11 @@
 }
 
 .note-item:hover {
-    background-color: #666;
+    background-color: var(--note-color-hover);
 }
 
 .active {
-    background-color: #555;
+    background-color: var(--note-color-active);
 }
 
 .title {
@@ -24,5 +24,5 @@
 
 .last-change {
     font-size: 1rem;
-    color: #a8d39d;
+    color: var(--note-color-diff);
 }

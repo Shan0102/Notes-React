@@ -12,6 +12,7 @@
     margin-bottom: 10px;
 }
 .settings_block {
+    display: block;
 }
 .settings_btn-controls {
     display: flex;
