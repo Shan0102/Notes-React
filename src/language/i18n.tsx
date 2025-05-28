@@ -7,7 +7,7 @@ i18n.use(LanguageDetector) // Automatically detect the user's language
     .init({
         resources: {
             english: {
-                // {t('SignUpNamePH')}
+                // {t('ValidationNameTooShort')}
                 translation: {
                     // home page
                     HomePageTitle: "Home Page",
@@ -65,6 +65,15 @@ i18n.use(LanguageDetector) // Automatically detect the user's language
                     SignUpPasswordPH: "password",
                     SignUpBtnCreate: "Create user",
                     SignUpSubmitSuccess: "User created succesfully",
+
+                    // validation
+                    ValidationNameTooShort: "Name length must be at least 3",
+                    ValidationNameTooLong: "Name length must not be less than 30",
+                    ValidationEmailInvalid: "Email format is invalid",
+                    ValidationEmailTooLong: "Email must be between 6 and 255 characters long",
+                    ValidationPasswordLength: "Password length from 8 to 255 characters long.",
+                    ValidationPasswordComplexity:
+                        "At least one uppercase, one lowercase, one number and symbol.",
                 },
             },
             russian: {
@@ -125,6 +134,15 @@ i18n.use(LanguageDetector) // Automatically detect the user's language
                     SignUpPasswordPH: "пароль",
                     SignUpBtnCreate: "Создать аккаунт",
                     SignUpSubmitSuccess: "Аккаунт создан",
+
+                    // validation
+                    ValidationNameTooShort: "Имя должно быть не менее 3 символов",
+                    ValidationNameTooLong: "Имя должно быть не более 30 символов",
+                    ValidationEmailInvalid: "Неверный формат электронной почты",
+                    ValidationEmailTooLong: "Почта должна быть от 6 до 255 символов",
+                    ValidationPasswordLength: "Пароль должен быть от 8 до 255 символов",
+                    ValidationPasswordComplexity:
+                        "Минимум одна заглавную и одну строчную буквы, одну цифру и символ",
                 },
             },
         },

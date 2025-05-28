@@ -67,7 +67,7 @@ const LoginPage: FC<LoginPageProps> = () => {
                 <MyInput
                     name="data"
                     placeholder={t(`Login-${dataType}-PH`)}
-                    validation={dataValidation}
+                    validation={(value) => dataValidation(value, t)}
                     setError={setIsNotValid}
                 />
                 <MyInput name="password" type="password" placeholder={t("LoginPasswordPH")} />

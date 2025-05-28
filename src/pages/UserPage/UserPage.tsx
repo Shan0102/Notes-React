@@ -38,13 +38,13 @@ const UserPage: FC = () => {
                     <MyInput
                         name="name"
                         placeholder={t("UserNamePH")}
-                        validation={validateName}
+                        validation={(value) => validateName(value, t)}
                         setError={setIsNotValid1}
                     />
                     <MyInput
                         name="username"
                         placeholder={t("UserUsernamePH")}
-                        validation={validateName}
+                        validation={(value) => validateName(value, t)}
                         setError={setIsNotValid2}
                     />
                     <MyButton

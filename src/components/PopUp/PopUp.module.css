@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--popup-bg-color);
+    z-index: 1000;
 }
 
 .popup-container.active {

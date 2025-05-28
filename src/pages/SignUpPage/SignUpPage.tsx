@@ -35,27 +35,27 @@ const SignUpPage: FC = () => {
                 <MyInput
                     name="name"
                     placeholder={t("SignUpNamePH")}
-                    validation={validateName}
+                    validation={(value) => validateName(value, t)}
                     setError={setError1}
                 />
                 <MyInput
                     name="username"
                     placeholder={t("SignUpUsernamePH")}
-                    validation={validateName}
+                    validation={(value) => validateName(value, t)}
                     setError={setError2}
                 />
                 <MyInput
                     name="email"
                     type="email"
                     placeholder={t("SignUpEmailPH")}
-                    validation={validateEmail}
+                    validation={(value) => validateEmail(value, t)}
                     setError={setError3}
                 />
                 <MyInput
                     name="password"
                     type="password"
                     placeholder={t("SignUpPasswordPH")}
-                    validation={validatePassword}
+                    validation={(value) => validatePassword(value, t)}
                     setError={setError4}
                 />
                 <MyButton
