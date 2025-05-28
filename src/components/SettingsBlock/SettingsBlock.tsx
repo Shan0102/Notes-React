@@ -3,40 +3,42 @@ import MyButton from "../MyButton/MyButton";
 
 import styles from "./SettingsBlock.module.css";
 import { SettingsContext } from "../../context/SettingsContext";
+import { useTranslation } from "react-i18next";
 
 interface SettingsBlockProps {}
 
 const SettingsBlock: FC<SettingsBlockProps> = () => {
+    const { t } = useTranslation();
     const { language, setLanguage, theme, setTheme } = useContext(SettingsContext);
 
     return (
         <div className={styles.settings}>
-            <h2 className={styles["settings_title"]}>Settings</h2>
+            <h2 className={styles["settings_title"]}>{t("SettingsTitle")}</h2>
             <div className={styles["settings_block"]}>
-                <h3 className={styles["settings_subtitle"]}>Choose a language</h3>
+                <h3 className={styles["settings_subtitle"]}>{t("SettingsChooseLang")}</h3>
                 <div className={styles["settings_btn-controls"]}>
                     <MyButton
-                        title="russian"
+                        title={t("SettingsRussianLang")}
                         onclick={() => setLanguage("russian")}
                         active={language === "russian"}
                     />
                     <MyButton
-                        title="english"
+                        title={t("SettingsEnglishLang")}
                         onclick={() => setLanguage("english")}
                         active={language === "english"}
                     />
                 </div>
             </div>
             <div className={styles["settings_block"]}>
-                <h3 className={styles["settings_subtitle"]}>Choose a theme</h3>
+                <h3 className={styles["settings_subtitle"]}>{t("SettingsChooseTheme")}</h3>
                 <div className={styles["settings_btn-controls"]}>
                     <MyButton
-                        title="dark"
+                        title={t("SettingsDarkTheme")}
                         onclick={() => setTheme("dark")}
                         active={theme === "dark"}
                     />
                     <MyButton
-                        title="light"
+                        title={t("SettingsLightTheme")}
                         onclick={() => setTheme("light")}
                         active={theme === "light"}
                     />

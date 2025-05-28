@@ -3,6 +3,7 @@ import type { Note } from "../../types";
 import { parseDate, parseTitle } from "../../utils/parseNote";
 
 import styles from "./NoteItem.module.css";
+import { useTranslation } from "react-i18next";
 
 interface NoteItemProps {
     note: Note;
@@ -11,6 +12,8 @@ interface NoteItemProps {
 }
 
 const NoteItem: FC<NoteItemProps> = ({ note, setCurrNote, isActive }) => {
+    const { t } = useTranslation();
+
     return (
         <div
             className={`${styles["note-item"]} ${isActive ? styles.active : ""}`}
@@ -20,7 +23,7 @@ const NoteItem: FC<NoteItemProps> = ({ note, setCurrNote, isActive }) => {
                 {parseTitle(note.title)}
             </p>
             <p className={styles["last-change"]}>
-                last change {parseDate(new Date(note.updated_at))}
+                {t("NoteLastChange")} {parseDate(new Date(note.updated_at))}
             </p>
         </div>
     );

@@ -8,8 +8,11 @@ import { validateName } from "../../utils/validation";
 import updateUser from "../../api/updateUser";
 
 import styles from "./UserPage.module.css";
+import { useTranslation } from "react-i18next";
 
 const UserPage: FC = () => {
+    const { t } = useTranslation();
+
     const isPut = useRef(false);
 
     const [isNotValid1, setIsNotValid1] = useState(true);
@@ -30,30 +33,30 @@ const UserPage: FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles["user-page"]}>
-                <h1 className={styles.title}>You can change user info</h1>
+                <h1 className={styles.title}>{t("UserPageTitle")}</h1>
                 <form className={styles.form} onSubmit={handleSubmit}>
                     <MyInput
                         name="name"
-                        placeholder={"name "}
+                        placeholder={t("UserNamePH")}
                         validation={validateName}
                         setError={setIsNotValid1}
                     />
                     <MyInput
                         name="username"
-                        placeholder={"username"}
+                        placeholder={t("UserUsernamePH")}
                         validation={validateName}
                         setError={setIsNotValid2}
                     />
                     <MyButton
                         disabled={isNotValid1 || isNotValid2}
-                        title="Save changes"
+                        title={t("UserBtnSave")}
                         type="submit"
                     />
                 </form>
                 {isLoading ? <LoadingDots /> : ""}
                 {isPut.current ? (
                     <div className={putError ? styles.error : styles.success}>
-                        {putError || "User updated succesfully"}
+                        {putError || t("UserUpdateSuccess")}
                     </div>
                 ) : (
                     ""

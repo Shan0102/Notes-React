@@ -9,6 +9,7 @@ import updateNote from "../../api/updateNote";
 import LoadingDots from "../LoadingDots/LoadingDots";
 import deleteNoteByNoteId from "../../api/deleteNote";
 import { deleteDraft, getDraftKey, updateDraft } from "../../utils/storeUnsavedChanges";
+import { useTranslation } from "react-i18next";
 
 interface NoteInterfaceProps {
     note: Note;
@@ -18,6 +19,8 @@ interface NoteInterfaceProps {
 }
 
 const NoteInterface: FC<NoteInterfaceProps> = ({ note, update, addError, deleteNoteHandler }) => {
+    const { t } = useTranslation();
+
     const [noteTitle, setNoteTitle] = useState("");
     const [noteContent, setNoteContent] = useState("");
     const [noteCompleted, setNoteCompleted] = useState(false);
@@ -86,27 +89,27 @@ const NoteInterface: FC<NoteInterfaceProps> = ({ note, update, addError, deleteN
         <div className={styles["note-interface"]}>
             <div className={styles["note-controllers"]}>
                 <MyCheckbox
-                    title="completed"
+                    title={t("NoteCompleted")}
                     checked={noteCompleted}
                     setChecked={handleCompletedChange}
                 />
                 <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
                     {isLoading ? <LoadingDots /> : ""}
-                    <MyButton title="SAVE" onclick={saveChanges} />
-                    <MyButton title="DELETE" onclick={() => deleteNote(note.note_id)} />
+                    <MyButton title={t("NoteBtnSave")} onclick={saveChanges} />
+                    <MyButton title={t("NoteBtnDelete")} onclick={() => deleteNote(note.note_id)} />
                 </div>
             </div>
             <div className={styles["note-areas"]}>
                 <MyTextarea
                     name="title"
-                    placeholder="note's title"
+                    placeholder={t("NoteTitlePlaceholder")}
                     value={noteTitle}
                     setValue={handleTitleChange}
                 />
                 <MyTextarea
                     auto={false}
                     name="content"
-                    placeholder="note's content"
+                    placeholder={t("NoteContentPlaceholder")}
                     value={noteContent}
                     setValue={handleContentChange}
                     max={10000}

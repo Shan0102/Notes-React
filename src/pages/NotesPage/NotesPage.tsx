@@ -12,10 +12,13 @@ import AuthContext from "../../context/contextAuth";
 import Modals from "../../components/Modals";
 
 import styles from "./NotesPage.module.css";
+import { useTranslation } from "react-i18next";
 
 interface NotesPageProps {}
 
 const NotesPage: FC<NotesPageProps> = () => {
+    const { t } = useTranslation();
+
     const { isAuth } = useContext(AuthContext);
 
     const addModalRef = useRef<(content: React.ReactNode) => void>(null);
@@ -74,10 +77,10 @@ const NotesPage: FC<NotesPageProps> = () => {
         };
         const modal = (
             <div>
-                are you sure?
+                {t("ModalQuestion")}
                 <div>
-                    <MyButton title="YES" onclick={cb} />
-                    <MyButton title="NO" onclick={deleteTopModal} />
+                    <MyButton title={t("ModalYes")} onclick={cb} />
+                    <MyButton title={t("ModalNo")} onclick={deleteTopModal} />
                 </div>
             </div>
         );
@@ -88,7 +91,7 @@ const NotesPage: FC<NotesPageProps> = () => {
         <div className={styles["notes-page"]}>
             <Modals addModalRef={addModalRef} deleteTopModalRef={deleteTopModalRef} />
             <div className={styles["notes-list"]}>
-                <MyButton title="add new note+" onclick={createAndSetNote} disabled={isLoading} />
+                <MyButton title={t("AddNoteBtn")} onclick={createAndSetNote} disabled={isLoading} />
                 {isLoading ? <LoadingDots /> : ""}
                 {notes.map((note) => (
                     <NoteItem

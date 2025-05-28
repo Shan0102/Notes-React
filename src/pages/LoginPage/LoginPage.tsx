@@ -8,10 +8,13 @@ import loginUser from "../../api/loginUser";
 import styles from "./LoginPage.module.css";
 import AuthContext from "../../context/contextAuth";
 import LoadingDots from "../../components/LoadingDots/LoadingDots";
+import { useTranslation } from "react-i18next";
 
 interface LoginPageProps {}
 
 const LoginPage: FC<LoginPageProps> = () => {
+    const { t } = useTranslation();
+
     const { setIsAuth } = useContext(AuthContext);
 
     const [dataType, setDataType] = useState<"username" | "email">("username");
@@ -50,21 +53,25 @@ const LoginPage: FC<LoginPageProps> = () => {
             <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles["btn-container"]}>
                     <MyButton
-                        title="username"
+                        title={t("LoginBtnUsername")}
                         active={dataType === "username"}
                         onclick={setUsername}
                     />
-                    <MyButton title="email" active={dataType === "email"} onclick={setEmail} />
+                    <MyButton
+                        title={t("LoginBtnEmail")}
+                        active={dataType === "email"}
+                        onclick={setEmail}
+                    />
                 </div>
                 <input name="data-type" type="hidden" value={dataType}></input>
                 <MyInput
                     name="data"
-                    placeholder={dataType + " for login"}
+                    placeholder={t(`Login-${dataType}-PH`)}
                     validation={dataValidation}
                     setError={setIsNotValid}
                 />
-                <MyInput name="password" type="password" placeholder="password" />
-                <MyButton disabled={isNotValid} title="Login" type="submit" />
+                <MyInput name="password" type="password" placeholder={t("LoginPasswordPH")} />
+                <MyButton disabled={isNotValid} title={t("LoginBtnSubmit")} type="submit" />
                 {isLoading ? <LoadingDots /> : ""}
                 {loginError ? <div className={styles.result}>{loginError}</div> : ""}
             </form>

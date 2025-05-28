@@ -8,6 +8,7 @@ import { privateLinks, publicLinks } from "./links";
 import styles from "./MyNavBar.module.css";
 import PopUp from "../PopUp/PopUp";
 import SettingsBlock from "../SettingsBlock/SettingsBlock";
+import { useTranslation } from "react-i18next";
 
 function disable(disabled: boolean) {
     if (disabled) {
@@ -18,10 +19,12 @@ function disable(disabled: boolean) {
 }
 
 const MyNavBar: FC = () => {
+    const { t } = useTranslation();
+
     const { isAuth, setIsAuth } = useContext(AuthContext);
     const links = isAuth ? privateLinks : publicLinks;
 
-    const [visible, setVisible] = useState(true);
+    const [visible, setVisible] = useState(false);
 
     return (
         <>
@@ -38,7 +41,7 @@ const MyNavBar: FC = () => {
                             }}
                             onClick={disable(link.disabled ? true : false)}
                         >
-                            {link.title}
+                            {t(`NavLink${link.title}`)}
                         </NavLink>
                     ))}
                 </div>
@@ -51,10 +54,10 @@ const MyNavBar: FC = () => {
                                     return `${styles.link} ${isActive ? styles.active : ""}`;
                                 }}
                             >
-                                User
+                                {t("NavLinkUser")}
                             </NavLink>
                             <button className={styles.link} onClick={() => logout(setIsAuth)}>
-                                Logout
+                                {t("NavBtnLogout")}
                             </button>
                         </>
                     ) : (

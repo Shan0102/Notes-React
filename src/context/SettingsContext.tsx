@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, type FC } from "react";
+import i18n from "../language/i18n";
 
 interface SettingsContextType {
     language: string;
@@ -20,9 +21,13 @@ const SettingsProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
 
     useEffect(() => {
         localStorage.setItem("language", language);
+        i18n.changeLanguage(language);
+    }, [language]);
+
+    useEffect(() => {
         localStorage.setItem("theme", theme);
         document.documentElement.setAttribute("data-theme", theme); // For CSS variables
-    }, [language, theme]);
+    }, [theme]);
 
     return (
         <SettingsContext.Provider value={{ language, setLanguage, theme, setTheme }}>

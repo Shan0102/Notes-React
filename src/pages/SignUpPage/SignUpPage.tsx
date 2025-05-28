@@ -5,8 +5,11 @@ import styles from "./SignUpPage.module.css";
 import { validateName, validateEmail, validatePassword } from "../../utils/validation";
 import postNewUser from "../../api/postNewUser";
 import LoadingDots from "../../components/LoadingDots/LoadingDots";
+import { useTranslation } from "react-i18next";
 
 const SignUpPage: FC = () => {
+    const { t } = useTranslation();
+
     const isPosted = useRef(false);
 
     const [error1, setError1] = useState(true);
@@ -31,39 +34,39 @@ const SignUpPage: FC = () => {
             <form className={styles.form} onSubmit={handleSubmit}>
                 <MyInput
                     name="name"
-                    placeholder="name you see"
+                    placeholder={t("SignUpNamePH")}
                     validation={validateName}
                     setError={setError1}
                 />
                 <MyInput
                     name="username"
-                    placeholder="username for login"
+                    placeholder={t("SignUpUsernamePH")}
                     validation={validateName}
                     setError={setError2}
                 />
                 <MyInput
                     name="email"
                     type="email"
-                    placeholder="your email"
+                    placeholder={t("SignUpEmailPH")}
                     validation={validateEmail}
                     setError={setError3}
                 />
                 <MyInput
                     name="password"
                     type="password"
-                    placeholder="password"
+                    placeholder={t("SignUpPasswordPH")}
                     validation={validatePassword}
                     setError={setError4}
                 />
                 <MyButton
                     disabled={error1 || error2 || error3 || error4}
-                    title="Create user"
+                    title={t("SignUpBtnCreate")}
                     type="submit"
                 />
                 {isLoading ? <LoadingDots /> : ""}
                 {isPosted.current ? (
                     <div className={postError ? styles.error : styles.success}>
-                        {postError || "User created succesfully"}
+                        {postError || t("SignUpSubmitSuccess")}
                     </div>
                 ) : (
                     ""
