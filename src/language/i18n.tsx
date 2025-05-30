@@ -57,6 +57,7 @@ i18n.use(LanguageDetector) // Automatically detect the user's language
                     ["Login-email-PH"]: "email",
                     LoginPasswordPH: "password",
                     LoginBtnSubmit: "Login",
+                    LoginGoogle: "Login with google",
 
                     // signup page
                     SignUpNamePH: "name you see",
@@ -65,6 +66,7 @@ i18n.use(LanguageDetector) // Automatically detect the user's language
                     SignUpPasswordPH: "password",
                     SignUpBtnCreate: "Create user",
                     SignUpSubmitSuccess: "User created succesfully",
+                    SignUpGoogle: "Sign Up with google",
 
                     // validation
                     ValidationNameTooShort: "Name length must be at least 3",
@@ -126,6 +128,7 @@ i18n.use(LanguageDetector) // Automatically detect the user's language
                     ["Login-email-PH"]: "почта",
                     LoginPasswordPH: "пароль",
                     LoginBtnSubmit: "Войти",
+                    LoginGoogle: "Войти с google",
 
                     // signup page
                     SignUpNamePH: "отображаемое имя",
@@ -134,6 +137,7 @@ i18n.use(LanguageDetector) // Automatically detect the user's language
                     SignUpPasswordPH: "пароль",
                     SignUpBtnCreate: "Создать аккаунт",
                     SignUpSubmitSuccess: "Аккаунт создан",
+                    SignUpGoogle: "Создать аккаунт с google",
 
                     // validation
                     ValidationNameTooShort: "Имя должно быть не менее 3 символов",

@@ -1,3 +1,11 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--bg-color-diff) inset !important;
+    -webkit-text-fill-color: var(--text-color) !important;
+}
+
 .input {
     border: 2px solid var(--text-color-diff);
     background-color: var(--bg-color-diff);

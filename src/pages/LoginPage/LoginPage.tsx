@@ -9,6 +9,7 @@ import styles from "./LoginPage.module.css";
 import AuthContext from "../../context/contextAuth";
 import LoadingDots from "../../components/LoadingDots/LoadingDots";
 import { useTranslation } from "react-i18next";
+import GoogleButton from "../../components/GoogleButton/GoogleButton";
 
 interface LoginPageProps {}
 
@@ -72,6 +73,7 @@ const LoginPage: FC<LoginPageProps> = () => {
                 />
                 <MyInput name="password" type="password" placeholder={t("LoginPasswordPH")} />
                 <MyButton disabled={isNotValid} title={t("LoginBtnSubmit")} type="submit" />
+                <GoogleButton type="Login" />
                 {isLoading ? <LoadingDots /> : ""}
                 {loginError ? <div className={styles.result}>{loginError}</div> : ""}
             </form>

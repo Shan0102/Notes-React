@@ -6,6 +6,7 @@ import { validateName, validateEmail, validatePassword } from "../../utils/valid
 import postNewUser from "../../api/postNewUser";
 import LoadingDots from "../../components/LoadingDots/LoadingDots";
 import { useTranslation } from "react-i18next";
+import GoogleButton from "../../components/GoogleButton/GoogleButton";
 
 const SignUpPage: FC = () => {
     const { t } = useTranslation();
@@ -63,6 +64,7 @@ const SignUpPage: FC = () => {
                     title={t("SignUpBtnCreate")}
                     type="submit"
                 />
+                <GoogleButton type="SignUp" />
                 {isLoading ? <LoadingDots /> : ""}
                 {isPosted.current ? (
                     <div className={postError ? styles.error : styles.success}>
