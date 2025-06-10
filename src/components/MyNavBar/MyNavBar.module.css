@@ -1,3 +1,11 @@
+/* .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: var(--bg-color-diff);
+} */
+
 .nav {
     display: flex;
     align-items: center;
@@ -6,7 +14,7 @@
     background-color: var(--bg-color-diff);
 }
 
-.links {
+.nav .links {
     display: flex;
     align-items: center;
     justify-content: start;
@@ -33,19 +41,14 @@
     text-decoration: underline;
 }
 
-.disabled {
-    color: var(--text-color-dis);
-}
-
-.disabled:active {
-    color: var(--text-color-dis);
-}
-
+.disabled,
+.disabled:active,
 .disabled:hover {
+    color: var(--text-color-dis);
     text-decoration: none;
 }
 
-.user-actions {
+.nav .user-actions {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -64,4 +67,95 @@
 
 .settings:hover {
     color: #478063;
+}
+
+.nav-small {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    font-size: 1rem;
+    background-color: var(--bg-color-diff);
+}
+
+.nav-small .link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .nav-small .settings {
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
+} */
+
+.nav-small .text {
+    /* font-size: 20px;
+    height: 20px;
+    width: 20px; */
+    font-size: 1rem;
+}
+
+.link-img {
+    display: block;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+}
+
+[data-theme="light"] .link-img {
+    filter: invert(100%) brightness(0%);
+}
+
+@media screen and (max-width: 680px) {
+    .nav {
+        padding: 8px;
+    }
+    .nav .link {
+        font-size: 1.4rem;
+    }
+    .settings {
+        font-size: 20px;
+        height: 20px;
+        width: 20px;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .nav {
+        padding: 6px;
+    }
+    .nav .link {
+        font-size: 1.1rem;
+    }
+    .settings {
+        font-size: 20px;
+        height: 20px;
+        width: 20px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .nav {
+        display: none;
+    }
+    .nav-small {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .link-text {
+        font-size: 0.9rem;
+    }
+}
+@media screen and (max-width: 340px) {
+    .link-text {
+        display: none;
+    }
+    .nav-small {
+        padding: 10px;
+    }
 }

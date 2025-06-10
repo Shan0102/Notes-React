@@ -48,3 +48,9 @@
 .checkbox:checked ~ .checkmark::after {
     display: block;
 }
+
+@media screen and (max-width: 410px) {
+    .checkbox-container {
+        font-size: 1.4rem;
+    }
+}

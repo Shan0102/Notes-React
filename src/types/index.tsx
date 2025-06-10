@@ -9,6 +9,7 @@ interface Link {
     path: string;
     title: string;
     disabled?: boolean;
+    smallPicture: string
 }
 
 interface User {

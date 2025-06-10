@@ -93,7 +93,7 @@ const NoteInterface: FC<NoteInterfaceProps> = ({ note, update, addError, deleteN
                     checked={noteCompleted}
                     setChecked={handleCompletedChange}
                 />
-                <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+                <div className={styles["btn-container"]}>
                     {isLoading ? <LoadingDots /> : ""}
                     <MyButton title={t("NoteBtnSave")} onclick={saveChanges} />
                     <MyButton title={t("NoteBtnDelete")} onclick={() => deleteNote(note.note_id)} />

@@ -19,6 +19,11 @@ interface NotesPageProps {}
 const NotesPage: FC<NotesPageProps> = () => {
     const { t } = useTranslation();
 
+    const [isListShown, setIsListShown] = useState(true);
+
+    const listRef = useRef<HTMLDivElement>(null);
+    const interfaceRef = useRef<HTMLDivElement>(null);
+
     const { isAuth } = useContext(AuthContext);
 
     const addModalRef = useRef<(content: React.ReactNode) => void>(null);
@@ -87,10 +92,28 @@ const NotesPage: FC<NotesPageProps> = () => {
         addModal(modal);
     };
 
+    const handleShowList = () => {
+        if (isListShown) {
+            setIsListShown(false);
+            if (listRef.current && interfaceRef.current) {
+                // listRef.current.style.width = "0px";
+                listRef.current.style.display = "none";
+                interfaceRef.current.setAttribute("hidden", "false");
+            }
+        } else {
+            setIsListShown(true);
+            if (listRef.current && interfaceRef.current) {
+                // listRef.current.style.width = "300px";
+                listRef.current.style.display = "block";
+                interfaceRef.current.setAttribute("hidden", "true");
+            }
+        }
+    };
+
     return (
         <div className={styles["notes-page"]}>
             <Modals addModalRef={addModalRef} deleteTopModalRef={deleteTopModalRef} />
-            <div className={styles["notes-list"]}>
+            <div className={styles["notes-list"]} ref={listRef}>
                 <MyButton title={t("AddNoteBtn")} onclick={createAndSetNote} disabled={isLoading} />
                 {isLoading ? <LoadingDots /> : ""}
                 {notes.map((note) => (
@@ -102,7 +125,10 @@ const NotesPage: FC<NotesPageProps> = () => {
                     />
                 ))}
             </div>
-            <div className={styles["notes-interface-container"]}>
+            <button onClick={handleShowList} className={styles["show-btn"]}>
+                <img src={isListShown ? "./left-arrow.png" : "./right-arrow.png"} alt="" />
+            </button>
+            <div className={styles["notes-interface-container"]} ref={interfaceRef}>
                 {currNote ? (
                     <NoteInterface
                         note={currNote}

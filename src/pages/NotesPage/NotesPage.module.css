@@ -2,7 +2,7 @@
     padding: 10px;
     flex: 1;
     display: flex;
-    gap: 30px;
+    gap: 0px;
     overflow-y: hidden;
 }
 
@@ -42,4 +42,53 @@
 .error {
     font-size: 1.2rem;
     color: #f30;
+}
+
+.show-btn {
+    margin-top: 20px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.show-btn:active {
+    transform: scale(0.95);
+}
+
+@media screen and (max-width: 560px) {
+    .notes-list {
+        width: 100%;
+    }
+    .notes-interface-container[hidden="true"] {
+        display: none;
+    }
+    .notes-interface-container[hidden="false"] {
+        display: block;
+    }
+}
+@media screen and (max-width: 520px) {
+    .notes-page button {
+        font-size: 1.4rem;
+    }
+    .notes-page textarea {
+        font-size: 1.4rem;
+    }
+}
+@media screen and (max-width: 410px) {
+    .notes-page button {
+        font-size: 1.2rem;
+    }
+    .notes-page textarea {
+        font-size: 1.2rem;
+    }
+}
+@media screen and (max-width: 340px) {
+    .notes-page button {
+        font-size: 1rem;
+    }
+    .notes-page textarea {
+        font-size: 1rem;
+    }
 }

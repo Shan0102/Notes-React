@@ -72,6 +72,50 @@ const MyNavBar: FC = () => {
                 <SettingsBlock />
             </PopUp>
             <Outlet />
+            <div className={styles["nav-small"]}>
+                <>
+                    {links.map((link) => (
+                        <NavLink
+                            key={link.title}
+                            to={link.path}
+                            className={({ isActive }) => {
+                                return `${styles.link} ${isActive ? styles.active : ""} ${
+                                    link.disabled ? styles.disabled : ""
+                                }`;
+                            }}
+                            onClick={disable(link.disabled ? true : false)}
+                        >
+                            <img src={link.smallPicture} className={styles["link-img"]} />
+                            <span className={styles["link-text"]}>{t(`NavLink${link.title}`)}</span>
+                        </NavLink>
+                    ))}
+                </>
+                <>
+                    {links === privateLinks ? (
+                        <>
+                            <NavLink
+                                to={"/user"}
+                                className={({ isActive }) => {
+                                    return `${styles.link} ${isActive ? styles.active : ""}`;
+                                }}
+                            >
+                                <img src="/user.png" className={styles["link-img"]} />
+                                <span className={styles["link-text"]}>{t("NavLinkUser")}</span>
+                            </NavLink>
+                            <button className={styles.link} onClick={() => logout(setIsAuth)}>
+                                <img src="/logout.png" className={styles["link-img"]} />
+                                <span className={styles["link-text"]}>{t("NavBtnLogout")}</span>
+                            </button>
+                        </>
+                    ) : (
+                        ""
+                    )}
+                    <button className={`${styles.link}`} onClick={() => setVisible(true)}>
+                        <img src="/setting.png" className={styles["link-img"]} />
+                        <span className={styles["link-text"]}>{t("SettingsTitle")}</span>
+                    </button>
+                </>
+            </div>
         </>
     );
 };

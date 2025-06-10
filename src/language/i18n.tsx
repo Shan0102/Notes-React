@@ -7,7 +7,7 @@ i18n.use(LanguageDetector) // Automatically detect the user's language
     .init({
         resources: {
             english: {
-                // {t('ValidationNameTooShort')}
+                // {t('SettingsTitle')}
                 translation: {
                     // home page
                     HomePageTitle: "Home Page",
