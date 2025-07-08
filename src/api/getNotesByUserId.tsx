@@ -1,6 +1,6 @@
 import type { Note } from "../types";
 
-const API_GET_NOTES_PATH = "http://localhost:3000/api/notes/user/";
+const API_GET_NOTES_PATH = `${import.meta.env.VITE_SERVER_ENDPOINT}/api/notes/user/`;
 
 type getNotesByUserIdType = (
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>

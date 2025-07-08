@@ -1,6 +1,6 @@
 import type { User } from "../types";
 
-const API_LOGIN_USER_PATH = "http://localhost:3000/api/users/login";
+const API_LOGIN_USER_PATH = `${import.meta.env.VITE_SERVER_ENDPOINT}/api/users/login`;
 
 type LoginUserType = (
     form: HTMLFormElement,

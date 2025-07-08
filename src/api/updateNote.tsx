@@ -1,6 +1,6 @@
 import type { Note, PostNote } from "../types";
 
-const API_UPDATE_NOTE_PATH = "http://localhost:3000/api/notes/";
+const API_UPDATE_NOTE_PATH = `${import.meta.env.VITE_SERVER_ENDPOINT}/api/notes/`;
 
 type UpdateNoteType = (
     note: PostNote,

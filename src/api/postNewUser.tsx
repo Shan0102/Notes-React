@@ -1,6 +1,6 @@
 import type { User } from "../types";
 
-const API_CREATE_USER_PATH = "http://localhost:3000/api/users";
+const API_CREATE_USER_PATH = `${import.meta.env.VITE_SERVER_ENDPOINT}/api/users`;
 
 type PostNewUserType = (
     form: HTMLFormElement,

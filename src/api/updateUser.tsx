@@ -1,6 +1,6 @@
 import type { User, UpdateUserInfo } from "../types";
 
-const API_UPDATE_USER_PATH = "http://localhost:3000/api/users/info/";
+const API_UPDATE_USER_PATH = `${import.meta.env.VITE_SERVER_ENDPOINT}/api/users/info/`;
 
 type UpdateUserType = (
     form: HTMLFormElement,

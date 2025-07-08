@@ -1,4 +1,4 @@
-const API_DELETE_NOTE_PATH = "http://localhost:3000/api/notes/";
+const API_DELETE_NOTE_PATH = `${import.meta.env.VITE_SERVER_ENDPOINT}/api/notes/`;
 
 type DeleteNoteByNoteIdType = (
     note_id: number,

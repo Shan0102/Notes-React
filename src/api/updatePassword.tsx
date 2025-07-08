@@ -1,6 +1,6 @@
 import type { PasswordsBody } from "../types";
 
-const API_UPDATE_PASSWORD_PATH = "http://localhost:3000/api/users/password/";
+const API_UPDATE_PASSWORD_PATH = `${import.meta.env.VITE_SERVER_ENDPOINT}/api/users/password/`;
 
 type UpdatePasswordType = (
     form: HTMLFormElement,
