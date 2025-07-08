@@ -96,14 +96,12 @@ const NotesPage: FC<NotesPageProps> = () => {
         if (isListShown) {
             setIsListShown(false);
             if (listRef.current && interfaceRef.current) {
-                // listRef.current.style.width = "0px";
                 listRef.current.style.display = "none";
                 interfaceRef.current.setAttribute("hidden", "false");
             }
         } else {
             setIsListShown(true);
             if (listRef.current && interfaceRef.current) {
-                // listRef.current.style.width = "300px";
                 listRef.current.style.display = "block";
                 interfaceRef.current.setAttribute("hidden", "true");
             }

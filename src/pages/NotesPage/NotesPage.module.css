@@ -34,6 +34,7 @@
 }
 
 .notes-interface-container {
+    display: block;
     border: 2px solid var(--text-color);
     border-radius: 10px;
     flex: 1;
@@ -62,10 +63,14 @@
         width: 100%;
     }
     .notes-interface-container[hidden="true"] {
-        display: none;
+        visibility: hidden;
+        position: absolute;
+        opacity: 0;
     }
     .notes-interface-container[hidden="false"] {
-        display: block;
+        visibility: visible;
+        position: relative;
+        opacity: 1;
     }
 }
 @media screen and (max-width: 520px) {

@@ -46,3 +46,20 @@
     color: var(--bg-color-diff);
     background-color: var(--text-color);
 }
+
+@media screen and (max-width: 520px) {
+    .s {
+        padding: 3px;
+        font-size: 0.5rem;
+    }
+
+    .m {
+        padding: 6px;
+        font-size: 1rem;
+    }
+
+    .l {
+        padding: 8px;
+        font-size: 1.5rem;
+    }
+}

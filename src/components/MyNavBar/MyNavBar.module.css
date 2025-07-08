@@ -137,7 +137,7 @@
     }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 480px) {
     .nav {
         display: none;
     }
@@ -146,12 +146,12 @@
     }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 420px) {
     .link-text {
         font-size: 0.9rem;
     }
 }
-@media screen and (max-width: 340px) {
+@media screen and (max-width: 380px) {
     .link-text {
         display: none;
     }

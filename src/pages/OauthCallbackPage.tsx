@@ -18,6 +18,7 @@ const OauthCallbackPage: FC = () => {
 
             const expiresIn = new Date().getTime() + 24 * 60 * 60 * 1000;
             localStorage.setItem("user_id", user.user_id.toString());
+            localStorage.setItem("google_id", "true");
             localStorage.setItem("token", token);
             localStorage.setItem("tokenExpires", expiresIn.toString());
 

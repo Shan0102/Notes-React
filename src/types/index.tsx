@@ -9,7 +9,7 @@ interface Link {
     path: string;
     title: string;
     disabled?: boolean;
-    smallPicture: string
+    smallPicture: string;
 }
 
 interface User {
@@ -45,9 +45,14 @@ interface UpdateUserInfo {
     username: string;
 }
 
+interface PasswordsBody {
+    prev_password: string;
+    new_password: string;
+}
+
 interface ModalData {
     content: React.ReactNode;
     id: string;
 }
 
-export type { Route, Link, User, Note, PostNote, ModalData, UpdateUserInfo };
+export type { Route, Link, User, Note, PostNote, ModalData, UpdateUserInfo, PasswordsBody };

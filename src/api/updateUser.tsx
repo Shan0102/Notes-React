@@ -1,6 +1,6 @@
-import type { User } from "../types";
+import type { User, UpdateUserInfo } from "../types";
 
-const API_UPDATE_USER_PATH = "http://localhost:3000/api/users/";
+const API_UPDATE_USER_PATH = "http://localhost:3000/api/users/info/";
 
 type UpdateUserType = (
     form: HTMLFormElement,
@@ -15,9 +15,9 @@ const updateUser: UpdateUserType = async (form, setIsLoading) => {
         const token = localStorage.getItem("token");
 
         const formData = new FormData(form);
-        const dataToUpdate = {
-            name: formData.get("name"),
-            username: formData.get("username"),
+        const dataToUpdate: UpdateUserInfo = {
+            name: formData.get("name") as string,
+            username: formData.get("username") as string,
         };
 
         const response = await fetch(API_UPDATE_USER_PATH + user_id, {

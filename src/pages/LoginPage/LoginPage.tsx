@@ -35,6 +35,7 @@ const LoginPage: FC<LoginPageProps> = () => {
 
             const expiresIn = new Date().getTime() + 24 * 60 * 60 * 1000;
             localStorage.setItem("user_id", userInfo.user.user_id.toString());
+            localStorage.setItem("google_id", "false");
             localStorage.setItem("token", userInfo.token);
             localStorage.setItem("tokenExpires", expiresIn.toString());
         }

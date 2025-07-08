@@ -44,11 +44,17 @@ i18n.use(LanguageDetector) // Automatically detect the user's language
                     NoteLastChange: "last change",
 
                     // update user
-                    UserPageTitle: "You can change user info",
+                    UserInfoTitle: "Change username and name",
                     UserNamePH: "name",
                     UserUsernamePH: "username",
+                    UserUpdateSuccess: "User updated successfully",
+
+                    UserPasswordTitle: "Change password",
+                    UserNewPasswordPH: "old password",
+                    UserOldPasswordPH: "new password",
+                    PasswordUpdateSuccess: "Password updated successfully",
+
                     UserBtnSave: "Save changes",
-                    UserUpdateSuccess: "User updated succesfully",
 
                     // login page
                     LoginBtnUsername: "username",
@@ -115,11 +121,17 @@ i18n.use(LanguageDetector) // Automatically detect the user's language
                     NoteLastChange: "изменено",
 
                     // update user
-                    UserPageTitle: "Изменить информацию о вас",
+                    UserInfoTitle: "Изменить имена",
                     UserNamePH: "имя",
                     UserUsernamePH: "имя пользователя",
+                    UserUpdateSuccess: "Имена сохранены",
+
+                    UserPasswordTitle: "Изменить пароль",
+                    UserNewPasswordPH: "старый пароль",
+                    UserOldPasswordPH: "новый пароль",
+                    PasswordUpdateSuccess: "Пароль сохранен",
+
                     UserBtnSave: "Сохранить",
-                    UserUpdateSuccess: "Изменения сохранены",
 
                     // login page
                     LoginBtnUsername: "пользователь",

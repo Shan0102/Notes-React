@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 300px;
+    max-width: min(80vw, 300px);
 }
 .settings_title {
     text-align: center;
@@ -21,4 +21,13 @@
 
 .settings_btn-controls > * {
     flex: 1;
+}
+
+@media screen and (max-width: 520px) {
+    .settings_title {
+        font-size: 1.5rem;
+    }
+    .settings_subtitle {
+        font-size: 1rem;
+    }
 }

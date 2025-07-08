@@ -39,3 +39,14 @@ input:-webkit-autofill:active {
     left: 30px;
     white-space: nowrap;
 }
+
+@media screen and (max-width: 520px) {
+    .input {
+        font-size: 1rem;
+    }
+    .error {
+        font-size: 0.65rem;
+        bottom: -5px;
+        left: 0;
+    }
+}
