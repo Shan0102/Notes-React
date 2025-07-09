@@ -26,7 +26,7 @@ const UserUpdate: FC<UserUpdateProps> = () => {
     const handleUserInfoSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const [updatedUser, error] = await updateUser(e.currentTarget, setIsLoading);
+        const [, error] = await updateUser(e.currentTarget, setIsLoading);
 
         isPut.current = true;
         setPutUserInfoError(error);
